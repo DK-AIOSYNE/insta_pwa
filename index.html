@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cc mathilde</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .question {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .btn-oui {
+            background-color: #4c8dc5;
+            color: white;
+        }
+
+        .btn-non {
+            background-color: #000000;
+            color: white;
+            position: relative;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: #888;
+        }
+
+        /* Animation de fuite pour le bouton "Non" */
+        .btn-non.fuir {
+            position: absolute;
+            transition: left 0.1s, top 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="question">Veux-tu sortir avec moi ?</div>
+    <button class="btn btn-oui" onclick="alert('Merci !')">Oui</button>
+    <button class="btn btn-non" id="btn-non" onmousemove="fuir()">Non</button>
+</div>
+
+<div class="footer">c.boudot</div>
+
+<script>
+    const btnNon = document.getElementById('btn-non');
+
+    function fuir() {
+        const x = Math.random() * (window.innerWidth - btnNon.offsetWidth);
+        const y = Math.random() * (window.innerHeight - btnNon.offsetHeight);
+        btnNon.style.left = `${x}px`;
+        btnNon.style.top = `${y}px`;
+        btnNon.classList.add('fuir');
+    }
+</script>
+
+</body>
+</html>
